@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "ru.hadron.kotlin_vk_sdk_template"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    //решение проблемы "Invoke-customs are only supported starting with android 0 --min-api 26"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    // For control over item selection of both touch and mouse driven selection
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
+
+    //vk sdk
+    implementation 'com.vk:androidsdk:1.6.9'
+
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+
+    // UI - Material CircularProgressView
+    implementation 'com.github.rahatarmanahmed:circularprogressview:2.5.0'
+    // UI - CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //UI - Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // MVP library - Moxy
+    String moxyVersion = "2.1.2"
+    implementation "com.github.moxy-community:moxy:$moxyVersion"
+    // For additional base view classes MvpActivity and MvpFragment add this:
+    implementation "com.github.moxy-community:moxy-android:$moxyVersion"
+    // If you are using AppCompat, you'll need MvpAppCompatActivity and MvpAppCompatFragment classes. Add this:
+    implementation "com.github.moxy-community:moxy-app-compat:$moxyVersion"
+    kapt "com.github.moxy-community:moxy-compiler:$moxyVersion"
+
+    //Dagger library
+    String daggerVersion = "2.26"
+    api "com.google.dagger:dagger:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    api "com.google.dagger:dagger-android:2.$daggerVersion"
+    api "com.google.dagger:dagger-android-support:$daggerVersion"
+    // if you use the support libraries
+    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

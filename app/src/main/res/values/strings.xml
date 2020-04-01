@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">kotlin-vk-sdk-template</string>
+    <string name="login_hello">Вас приветствует приложение ДрузьяВК.\n Нажмите войти, чтобы увидеть Ваших друзей!</string>
+    <string name="login_enter">ВОЙТИ</string>
+    <string name="friend_search_hint">Enter your query here</string>
+    <string name="friends_no_item">У вас нет друзей :(</string>
+    <string name="login_error_credentials">Ошибка при попытке логина в ВК</string>
+    <string name="friend_no_city">Город не указан</string>
+    <string name="friends_error_loading">Ошибка при заргузке списка друзей!</string>
+
+    <integer name="com_vk_sdk_AppId">7378097</integer>
+</resources>
